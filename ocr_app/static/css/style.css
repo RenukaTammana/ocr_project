@@ -1,0 +1,130 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.container-fluid {
+  margin: 0 auto;
+  width: 100%;
+}
+
+h1, h2 {
+  text-align: center;
+  margin: 10px 0;
+}
+
+/* Instructions Section */
+.instruction {
+  border: 1px solid #eaeaec;
+  padding: 25px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #c6cdea;
+}
+
+.instruction ol {
+  list-style: decimal;
+  padding: 0;
+}
+
+.instruction li {
+  margin-bottom: 5px;
+}
+
+/* Upload Section */
+.upload-img {
+  display: none;
+}
+
+#uploadButton {
+  background-color: #327078;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#uploadButton:disabled {
+  background-color: #b0e5e3;
+cursor:  pointer;
+}
+
+/* Display Information Section */
+.display-info {
+  width: 500px;
+  padding: 20px;
+  border: 1px solid #514d6c;
+  border-radius: 5px;
+  margin: auto;
+  text-align: left;
+  font-family: Arial, sans-serif;
+  border-width: thick;
+}
+.display-info input[type="text"],
+.display-info button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  
+}
+.display-info button{
+  background-color: #8fc2f8;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+/* Visitor Email Section */
+.visitor-email {
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.visitor-email h2 {
+  margin-bottom: 20px;
+}
+
+.visitor-email form {
+  display: inline-block;
+}
+
+.visitor-email label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.visitor-email input[type="email"],
+.visitor-email input[type="tel"],
+.visitor-email button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.visitor-email button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.visitor-email button:hover {
+  background-color: #0056b3;
+}

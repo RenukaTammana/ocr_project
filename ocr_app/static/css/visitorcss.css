@@ -1,0 +1,59 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Visitor Card */
+#visitor-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 0 auto;
+  width: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#visitor-card h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+#visitor-card p {
+  margin-bottom: 5px;
+}
+
+/* Download Pass Button */
+#downloadPassBtn {
+  background-color: #0056b3;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 10px auto;
+  display: block;
+}
+
+#downloadPassBtn:hover {
+  background-color: #8fc2f8;
+}
+
+/* Expiry Section */
+.expiry {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.expiry p {
+  font-style: italic;
+  color: #aaa;
+}
