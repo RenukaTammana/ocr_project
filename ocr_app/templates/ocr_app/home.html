@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+<head>
+    <link rel="stylesheet" href="{% static '/css/style.css' %}" type="text/css" media="all" />
+
+    <title>OCR Project</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+
+</head>
+<body>
+    <h1>VisiOCR Project</h1>
+    <div class="instruction" id="instructions">
+        <h2>Follow the Instruction while uploading the image</h2>
+        <ol>
+            <li>Uploaded image should be an Aadhaar card or Pan Card</li>
+            <li>Choose a clear and high-quality image.</li>
+            <li>Use properly scanned documents for better results.</li>
+            <li>Upload images in JPEG or PNG format.</li>
+            <li>Avoid background clutter and distortions.</li>
+            <li>Zoom in to verify text legibility before uploading.</li>
+        </ol>
+        <label>
+            <input type="checkbox" id="confirmCheckbox">
+            I have read and agree to the instructions.
+        </label>
+    </div>
+    <div class="upload-img" id="uploadSection"></div>
+        <form method="post" enctype="multipart/form-data" action="{% url 'upload_image' %}">
+            {% csrf_token %}
+            <input type="file" name="image">
+            <button type="submit" id="uploadButton" disabled>Upload Image</button>
+        </form>
+    </div><br>
+    
+        <!-- <h1>Visitor Information</h1> -->
+        {% if error_message %}
+        <div class="display-info" >
+            <p style="color: red;">{{ error_message }}</p>
+            <!-- Manual input form -->
+            <form method="post" action="">
+                {% csrf_token %}
+                <h1>Visitor Information</h1>
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" required><br>
+                <label for="birth_date">Birth Date (DD/MM/YYYY):</label><br>
+                <input type="text" id="birth_date" name="birth_date" pattern="\d{1,2}/\d{1,2}/\d{4}" required><br>
+                <button type="submit">Submit</button>
+            </form>
+        {% endif %}
+    </div>
+    <br>
+    <!-- Additional visitor information form -->
+    <div class="visitor-email">
+        <h2>Additional visitor information</h2>
+        <form id="visitor_info_form">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <br>
+            <label for="phone">Phone Number:
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+            <br>
+            <button type="submit" id="generatePass">Generate Visitor Pass</button>
+        </form>
+    </div>
+    
+
+
+    <script>
+        $(document).ready(function() {
+            // Enable upload button only when checkbox is checked
+            $('#confirmCheckbox').change(function() {
+                if ($(this).is(':checked')) {
+                    $('#uploadButton').prop('disabled', false);
+                    $('#uploadSection').show();
+                } else {
+                    $('#uploadButton').prop('disabled', true);
+                    $('#uploadSection').hide();
+                }
+            });
+        
+            // Handle visitor pass generation
+            $('#generatePass').click(function(event) {
+                event.preventDefault(); // Prevent the default form submission
+        
+                const name = $('#name').val() || '{{ name }}';
+                const birthDate = $('#birth_date').val() || '{{ birth_date }}';
+                const age = '{{ age }}'; // Replace this with dynamic age calculation if necessary
+                const email = $('#email').val();
+                const phone = $('#phone').val();
+        
+                // Validate form values
+                if (name && birthDate && email && phone) {
+                    // Create URL parameters
+                    const params = new URLSearchParams({
+                        name: name,
+                        birth_date: birthDate,
+                        age :age,
+                        email: email,
+                        phone : phone
+                    });
+        
+                    // Open the visitor card template in a new tab with URL parameters
+                    window.open(`vscard.html?${params.toString()}`, '_blank');
+                } else {
+                    // Handle case where form fields are not filled out
+                    alert('Please fill out all required fields.');
+                }
+            });
+        });
+        
+        
+    </script>
+</body>
+</html>
